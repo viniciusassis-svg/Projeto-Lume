@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lume - Dashboard</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <h1>Dashboard</h1>
+        <p>Cadastre seus eletrodomésticos para monitorar o consumo:</p>
+        <form id="applianceForm">
+            <select id="applianceName" required>
+                <option value="">Selecione um eletrodoméstico</option>
+                <option value="Geladeira" data-power="0.15">Geladeira (0.15 kW)</option>
+                <option value="Ventilador" data-power="0.05">Ventilador (0.05 kW)</option>
+                <option value="TV" data-power="0.1">TV (0.1 kW)</option>
+                <option value="Máquina de Lavar" data-power="1.5">Máquina de Lavar (1.5 kW)</option>
+                <option value="Micro-ondas" data-power="0.75">Micro-ondas (0.75 kW)</option>
+                <option value="Ferro de Passar" data-power="0.5">Ferro de Passar (0.5 kW)</option>
+                <option value="Ar-condicionado" data-power="1.0">Ar-condicionado (1 kW)</option>
+                <option value="Chuveiro" data-power="3.5">Chuveiro (3.5 kW)</option>
+            </select>
+            <input type="number" id="applianceMinutes" placeholder="Minutos de uso por dia" required>
+            <button type="submit">Adicionar</button>
+        </form>
+
+        <h2>Seus Eletrodomésticos</h2>
+        <ul id="applianceList"></ul>
+
+        <canvas id="consumptionChart" width="400" height="200"></canvas>
+        <p id="consumptionStatus"></p>
+        <p id="co2Impact"></p>
+        <p id="finalCost"></p>
+
+        <div class="solution-container">
+            <h2>Soluções Sustentáveis</h2>
+            <p>Simule quanto você poderia economizar usando energia solar:</p>
+            <label for="solarPanels">Tamanho do painel (kWh/mês)</label>
+            <select id="solarPanels">
+                <option value="30">Painel 300 W (~30 kWh/mês)</option>
+                <option value="50">Painel 500 W (~50 kWh/mês)</option>
+            </select>
+            <label for="panelQty">Quantidade de painéis</label>
+            <input type="number" id="panelQty" min="1" value="1">
+            <button id="simulate">Simular Economia</button>
+            <p id="solarGen"></p>
+            <p id="solarCoverage"></p>
+            <p id="solarSavings"></p>
+            <p id="solarCO2"></p>
+        </div>
+
+        <div class="solution-container">
+            <h2>📘 Quer saber como calculamos tudo?</h2>
+            <p>Acesse nossa página de explicação e entenda cada detalhe de forma simples.</p>
+            <button onclick="window.location.href='educacao.html'">ℹ️ Entenda seus cálculos</button>
+        </div>
+    </div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="dashboard.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
