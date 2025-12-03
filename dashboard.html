@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lume - Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Ícones Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    /* Animação de entrada suave dos botões */
+    .solution-container button {
+      opacity: 0;
+      transform: translateY(15px);
+      animation: fadeUpBtn 0.8s ease forwards;
+      animation-delay: 0.3s;
+    }
+
+    @keyframes fadeUpBtn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .solution-container button i {
+      margin-right: 8px;
+    }
+  </style>
+
+
+  <!-- =============================== -->
+  <!-- ÍCONES MODERNOS ADICIONADOS AQUI -->
+  <!-- =============================== -->
+  <style>
+    .icon-round {
+        position: fixed;
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        background: #ffffff;
+        border: 2px solid rgba(0,0,0,0.08);
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        box-shadow: 0 4px 10px rgba(0,0,0,0.10);
+        cursor: pointer;
+        transition: 0.25s ease;
+
+        z-index: 99999;
+    }
+
+    .icon-round:hover {
+        transform: scale(1.12);
+        box-shadow: 0 6px 16px rgba(0,0,0,0.18);
+    }
+
+    /* Ícone perfil colorido */
+    .icon-round.profile i {
+        font-size: 18px;
+        background: linear-gradient(135deg, #6f3cff, #2ee6dd);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    /* ícone logout vermelho */
+    .icon-round.logout i {
+        font-size: 18px;
+        color: #e63946;
+    }
+  </style>
+
+</head>
+
+<body>
+
+<!-- POPUP DO PERFIL -->
+<div id="profilePopup" class="profile-popup">
+  <div class="profile-box">
+    <h2>Meu Perfil</h2>
+
+    <p><strong>Nome:</strong> <span id="profileName"></span></p>
+    <p><strong>Email:</strong> <span id="profileEmail"></span></p>
+    <p><strong>Conta criada em:</strong> <span id="profileCreated"></span></p>
+
+    <button id="closeProfile">Fechar</button>
+  </div>
+</div>
+
+<style>
+  .profile-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.45);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+  }
+
+  .profile-box {
+    background: #fff;
+    padding: 28px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 380px;
+    text-align: left;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.18);
+  }
+
+  .profile-box h2 {
+    margin-bottom: 12px;
+  }
+
+  .profile-box button {
+    margin-top: 20px;
+    width: 100%;
+  }
+</style>
+
+
+<!-- ========================= -->
+<!-- ÍCONE PERFIL MODERNO      -->
+<!-- ========================= -->
+<a id="openProfile" class="icon-round profile" title="Meu perfil" style="top:18px; right:70px;">
+  <i class="fa-solid fa-user"></i>
+</a>
+
+
+<!-- ========================= -->
+<!-- ÍCONE LOGOUT MODERNO      -->
+<!-- ========================= -->
+<a href="logout.php" class="icon-round logout" title="Sair" style="top:18px; right:18px;">
+  <i class="fa-solid fa-right-from-bracket"></i>
+</a>
+
+
+<!-- CONTEÚDO DO DASHBOARD -->
+<div class="dashboard-container">
+  <h1>Dashboard</h1>
+  <p>Cadastre seus eletrodomésticos para monitorar o consumo:</p>
+
+  <form id="applianceForm">
+    <select id="applianceName" required>
+      <option value="">Selecione um eletrodoméstico</option>
+      <option value="Geladeira" data-power="0.15">Geladeira (0.15 kW)</option>
+      <option value="Ventilador" data-power="0.05">Ventilador (0.05 kW)</option>
+      <option value="TV" data-power="0.1">TV (0.1 kW)</option>
+      <option value="Máquina de Lavar" data-power="1.5">Máquina de Lavar (1.5 kW)</option>
+      <option value="Micro-ondas" data-power="0.75">Micro-ondas (0.75 kW)</option>
+      <option value="Ferro de Passar" data-power="0.5">Ferro de Passar (0.5 kW)</option>
+      <option value="Ar-condicionado" data-power="1.0">Ar-condicionado (1 kW)</option>
+      <option value="Chuveiro" data-power="3.5">Chuveiro (3.5 kW)</option>
+    </select>
+
+    <input type="number" id="applianceMinutes" placeholder="Minutos de uso por dia" required>
+    <button type="submit">Adicionar</button>
+  </form>
+
+  <h2>Seus Eletrodomésticos</h2>
+  <ul id="applianceList"></ul>
+
+
+  <!-- SOLAR -->
+  <div class="solution-container">
+
+  <!-- RELATÓRIOS -->
+  <div class="solution-container">
+    <h2>📊 Relatórios</h2>
+    <p>Ver ou registrar gastos mensais de energia.</p>
+    <button type="button" onclick="window.location.href='reports.php'">
+      <i class="fa-solid fa-chart-line"></i>Relatórios mensais
+    </button>
+  </div>
+
+  <!-- EDUCAÇÃO -->
+  <div class="solution-container">
+    <h2>📘 Quer saber como calculamos tudo?</h2>
+    <p>Acesse nossa página de explicação e entenda cada detalhe de forma simples.</p>
+    <button type="button" onclick="window.location.href='educacao.html'">
+      <i class="fa-solid fa-circle-info"></i>Entenda seus cálculos
+    </button>
+  </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="dashboard.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>

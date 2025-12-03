@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lume - Entenda seus cálculos</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <h1>🔎 Entenda seus cálculos</h1>
+        <p>Transparência é essencial! Veja de forma simples como chegamos nos valores exibidos no dashboard.</p>
+
+        <div class="solution-container">
+            <h2>⚡ Consumo de Eletrodomésticos</h2>
+            <p>Calculamos o consumo de cada aparelho com base em:</p>
+            <p><strong>Potência (kW) × horas de uso por dia × 30 dias</strong></p>
+            <p>📺 Exemplo: Uma TV de 0.1 kW usada 2 horas por dia → <strong>6 kWh/mês</strong></p>
+        </div>
+
+        <div class="solution-container">
+            <h2>💰 Conta de Energia</h2>
+            <p>O valor estimado da conta é:</p>
+            <p><strong>Consumo total (kWh) × R$ 0,80</strong></p>
+            <p>💡 Exemplo: 50 kWh/mês → <strong>R$ 40,00/mês</strong></p>
+        </div>
+
+        <div class="solution-container">
+            <h2>🌱 Impacto Ambiental</h2>
+            <p>Cada kWh consumido emite em média <strong>0,233 kg de CO₂</strong>.</p>
+            <p>🌍 Exemplo: 50 kWh/mês → <strong>11,65 kg de CO₂/mês</strong></p>
+        </div>
+
+        <div class="solution-container">
+            <h2>☀️ Energia Solar</h2>
+            <p>Simulamos a geração de energia dos painéis solares:</p>
+            <p><strong>Energia gerada (kWh) limitada ao consumo total</strong></p>
+            <p>💰 Economia: <strong>Energia gerada × R$ 0,80</strong></p>
+            <p>🌱 Redução de CO₂: <strong>Energia gerada × 0,233</strong></p>
+            <p>🔋 Exemplo: 2 painéis de 300W → 60 kWh/mês → pode cobrir até 100% do consumo.</p>
+        </div>
+
+        <button onclick="window.location.href='dashboard.html'">⬅ Voltar ao Dashboard</button>
+    </div>
+
+<script src="script.js"></script>
+</body>
+</html>

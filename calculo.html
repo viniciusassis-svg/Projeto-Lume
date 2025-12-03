@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lume - Como funciona o cálculo</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <h1>Como funciona o cálculo?</h1>
+        <p>Aqui você entende como chegamos nos valores de consumo, custo e impacto ambiental.</p>
+
+        <div class="solution-container">
+            <h2>⚡ Consumo de Eletrodomésticos</h2>
+            <p>O consumo mensal é calculado assim:</p>
+            <p><strong>Potência do aparelho (kW) × horas de uso por dia × 30 dias</strong></p>
+            <p>Exemplo: uma TV de 0.1 kW usada 120 minutos (2 horas) por dia → <br>
+            <strong>0.1 × 2 × 30 = 6 kWh/mês</strong></p>
+        </div>
+
+        <div class="solution-container">
+            <h2>💰 Custo da Conta de Luz</h2>
+            <p>O valor é estimado multiplicando o consumo total pela tarifa média de energia elétrica.</p>
+            <p><strong>Consumo total (kWh) × R$ 0,80</strong></p>
+            <p>Exemplo: 50 kWh/mês → <strong>R$ 40,00/mês</strong></p>
+        </div>
+
+        <div class="solution-container">
+            <h2>🌱 Impacto Ambiental (CO₂)</h2>
+            <p>Cada 1 kWh consumido gera em média 0,233 kg de CO₂.</p>
+            <p><strong>Consumo total (kWh) × 0,233</strong></p>
+            <p>Exemplo: 50 kWh/mês → <strong>11,65 kg de CO₂/mês</strong></p>
+        </div>
+
+        <div class="solution-container">
+            <h2>☀️ Energia Solar</h2>
+            <p>Na simulação, consideramos que a placa solar gera uma quantidade de energia mensal (ex: 30 kWh ou 50 kWh).</p>
+            <p>A economia é calculada assim:</p>
+            <p><strong>Energia gerada (kWh) limitada ao consumo total × R$ 0,80</strong></p>
+            <p>A redução de CO₂ é:</p>
+            <p><strong>Energia gerada (kWh) limitada ao consumo total × 0,233</strong></p>
+        </div>
+
+        <button onclick="window.location.href='dashboard.html'">⬅ Voltar ao Dashboard</button>
+    </div>
+</body>
+</html>

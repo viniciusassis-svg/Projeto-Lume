@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Relatórios Mensais - Lume</title>
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    body {
+      background: #f5f6fa;
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 30px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    }
+
+    h1, h2 {
+      margin-bottom: 15px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .btn {
+      background: #6c63ff;
+      color: #fff;
+      border: none;
+      padding: 10px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .btn:hover {
+      background: #5952d4;
+    }
+
+    .btn.ghost {
+      background: #ddd;
+      color: #000;
+    }
+
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .card {
+      flex: 1;
+      min-width: 200px;
+      background: #fff;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    }
+
+    #reportsTable {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    #reportsTable th, #reportsTable td {
+      padding: 10px;
+      border-bottom: 1px solid #ccc;
+    }
+
+    label {
+      font-size: 14px;
+      margin-top: 10px;
+      display: block;
+    }
+
+    select, input {
+      padding: 8px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      margin-top: 5px;
+    }
+
+    #chartWrap {
+      background: #fff;
+      padding: 20px;
+      margin-top: 25px;
+      border-radius: 10px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="top">
+      <h1>Relatórios Mensais</h1>
+      <div>
+        <button class="btn" id="generateReportBtn">
+          <i class="fa-solid fa-file-circle-plus"></i> Gerar relatório
+        </button>
+
+        <button class="btn ghost" id="refreshBtn">
+          <i class="fa-solid fa-rotate"></i> Atualizar
+        </button>
+      </div>
+    </div>
+
+    <!-- SELETOR DE MÊS -->
+    <div style="margin-top:20px; margin-bottom: 20px;">
+      <label for="reportMonth">Selecione o mês do relatório</label>
+      <input type="month" id="reportMonth">
+    </div>
+
+    <h3>Simulação Solar (opcional)</h3>
+    <label>Tamanho do painel (kWh/mês)</label>
+    <select id="panelSize">
+      <option value="30">300W (~30 kWh/mês)</option>
+      <option value="50">500W (~50 kWh/mês)</option>
+      <option value="75">750W (~75 kWh/mês)</option>
+    </select>
+
+    <label>Quantidade de painéis</label>
+    <input type="number" id="panelQty" min="0" value="0">
+
+    <p>Geração solar estimada: <strong id="previewSolar">0.00</strong> kWh/mês</p>
+
+    <div class="cards">
+      <div class="card">
+        <strong id="totalKwh">0.00 kWh</strong>
+        <p>Consumo total</p>
+      </div>
+      <div class="card">
+        <strong id="totalCost">R$ 0.00</strong>
+        <p>Custo estimado</p>
+      </div>
+      <div class="card">
+        <strong id="totalCO2">0.00 kg CO₂</strong>
+        <p>Emissão total</p>
+      </div>
+      <div class="card">
+        <strong id="solarPreviewCard">0.00 kWh</strong>
+        <p>Geração solar</p>
+      </div>
+    </div>
+
+    <div id="chartWrap">
+      <canvas id="reportsChart" height="150"></canvas>
+    </div>
+
+    <h2>Histórico de Relatórios</h2>
+    <p id="noReports">Carregando...</p>
+
+    <table id="reportsTable" style="display:none;">
+      <thead>
+        <tr>
+          <th>Mês</th>
+          <th>kWh</th>
+          <th>Custo (R$)</th>
+          <th>CO₂ (kg)</th>
+          <th>Solar (kWh)</th>
+          <th>Economia (R$)</th>
+          <th>Criado em</th>
+        </tr>
+      </thead>
+      <tbody id="reportsTbody"></tbody>
+    </table>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="reports.js"></script>
+</body>
+</html>
