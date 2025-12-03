@@ -1,7 +1,7 @@
 Como Executar
 
 1. Baixe ou clone este repositório:
-   git clone [https://github.com/SEU\_USUARIO/lume.git](https://github.com/SEU_USUARIO/lume.git)
+   git clone [https://github.com/viniciusassis-svg/lume.git](https://github.com/SEU_USUARIO/lume.git)
 
 2. Abra a pasta do projeto no seu computador.
 
